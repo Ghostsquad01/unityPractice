@@ -9,7 +9,7 @@ public class spawnBall : MonoBehaviour
     void Start()
     {
         Instantiate(ballPrefab);
-        ballPrefab.transform.localPosition = new Vector3(24, 0, 0);
+        ballPrefab.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame

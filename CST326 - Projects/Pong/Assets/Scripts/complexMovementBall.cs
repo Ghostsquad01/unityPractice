@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms;
 using Random = UnityEngine.Random;
 
 
-public class moveBall : MonoBehaviour
+public class complexMovementBall : MonoBehaviour
 {
     // right side z: up-pos/down-neg
     // left side z: up-pos/down-neg
