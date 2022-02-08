@@ -45,8 +45,8 @@ public class Ball : MonoBehaviour
     {
         Vector3 intersect = transform.position - collision.transform.position;
         float relativeIntersection = intersect.x / (collision.transform.position.x / 2);
-        Debug.Log(relativeIntersection);
-        bounceAngle = relativeIntersection * (180f * Mathf.Deg2Rad);
+        Debug.Log(relativeIntersection + " intersect");
+        bounceAngle = relativeIntersection * (45f * Mathf.Deg2Rad);
 
         if (collision.transform.name == "RightPaddle")
         {
