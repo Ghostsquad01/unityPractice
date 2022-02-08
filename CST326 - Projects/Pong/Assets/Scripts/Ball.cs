@@ -45,7 +45,8 @@ public class Ball : MonoBehaviour
     {
         Vector3 intersect = transform.position - collision.transform.position;
         float relativeIntersection = intersect.x / (collision.transform.position.x / 2);
-        bounceAngle = relativeIntersection * (45f * Mathf.Deg2Rad);
+        Debug.Log(relativeIntersection);
+        bounceAngle = relativeIntersection * (180f * Mathf.Deg2Rad);
 
         if (collision.transform.name == "RightPaddle")
         {
@@ -59,13 +60,21 @@ public class Ball : MonoBehaviour
         }else if (collision.transform.name == "BottomWall")
         {
             vz = Mathf.Sin(bounceAngle);
+            if (Single.IsNaN(vz))
+            {
+                vz = 1;
+            }
             Debug.Log("bottom " + vz);
         }else if (collision.transform.name == "TopWall")
         {
             vz = -Mathf.Sin(bounceAngle);
-            Debug.Log("top " + vz);
+            if (Single.IsNaN(vz))
+            {
+                Debug.Log("top " + vz + " " + bounceAngle);
+                vz = -1;
+            }
+            
         }
-        
         rBody.AddForce(new Vector3(vx*speed, 0f, vz*speed), ForceMode.VelocityChange);
     }
     
