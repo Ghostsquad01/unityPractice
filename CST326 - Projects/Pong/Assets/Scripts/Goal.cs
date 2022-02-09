@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Goal : MonoBehaviour
 {
+    public TextMeshProUGUI score;
     public GameObject ballPrefab;
     private int leftScore = 0;
     private int rightScore = 0;
@@ -27,12 +29,12 @@ public class Goal : MonoBehaviour
         {
             ballPrefab.transform.localPosition = new Vector3(-24f, 0f, 0f);
             rightScore++;
-            Debug.Log("Right Player Score: " + rightScore);
+            score.text = $"Score: {rightScore}";
         }else if (transform.gameObject.name == "RightGoal")
         {
             ballPrefab.transform.localPosition = new Vector3(24f, 0f, 0f);
             leftScore++;
-            Debug.Log("Left Player Score: " + leftScore);
+            score.text = $"Score: {leftScore}";
         }
 
         if (leftScore == 11)

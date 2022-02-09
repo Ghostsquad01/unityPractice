@@ -15,23 +15,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float direction_x = Random.value < 0.5f ? -1.0f : 1.0f;
-        float direction_z = Random.value < 0.5f ? -1.0f : 1.0f;
-        rBody = GetComponent<Rigidbody>();
-        bounceAngle = RandomBounceAngle();
-
-        if (direction_x < 0)
-        {
-            vx = -Mathf.Cos(bounceAngle);
-            vz = Mathf.Sin(bounceAngle) * direction_z;
-        }
-        else
-        {
-            vx = Mathf.Cos(bounceAngle);
-            vz = Mathf.Sin(bounceAngle) * direction_z;
-        }
         
-        rBody.AddForce(new Vector3(vx*speed, 0f, vz*speed), ForceMode.VelocityChange);
 
     }
 
