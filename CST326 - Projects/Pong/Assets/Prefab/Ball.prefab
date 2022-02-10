@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 1012973179184068873}
   - component: {fileID: 1126607754003277282}
   - component: {fileID: 1012973179184068875}
-  - component: {fileID: 8851781886160999986}
-  - component: {fileID: -5952118505795301098}
+  - component: {fileID: -635243205325963255}
+  - component: {fileID: -3419791022444030645}
+  - component: {fileID: -3817274995844197728}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012973179184068874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,7 +115,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 1
---- !u!114 &8851781886160999986
+--- !u!114 &-635243205325963255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012973179184068874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8bebdbbd9b1a934ea6f03d62a2fc594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballSpeed: 10
+--- !u!114 &-3419791022444030645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012973179184068874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f05ca6540c1be54f8d3e7506c9c6f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 50
+--- !u!114 &-3817274995844197728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,16 +154,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yawDegreesPerSecond: 45
---- !u!114 &-5952118505795301098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012973179184068874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4684df5d3b7393244a26be4aaef82ed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballSpeed: 10

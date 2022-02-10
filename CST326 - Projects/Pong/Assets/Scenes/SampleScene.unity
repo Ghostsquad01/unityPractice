@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 310077660}
   - component: {fileID: 310077659}
   - component: {fileID: 310077663}
+  - component: {fileID: 310077664}
   m_Layer: 0
   m_Name: BottomWall
   m_TagString: Untagged
@@ -500,6 +501,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &310077664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310077658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f05ca6540c1be54f8d3e7506c9c6f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 90
 --- !u!1 &314185427
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +757,7 @@ GameObject:
   - component: {fileID: 495033091}
   - component: {fileID: 495033090}
   - component: {fileID: 495033094}
+  - component: {fileID: 495033095}
   m_Layer: 0
   m_Name: TopWall
   m_TagString: Untagged
@@ -842,6 +857,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &495033095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495033089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f05ca6540c1be54f8d3e7506c9c6f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 90
 --- !u!1 &626801100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1513,7 @@ GameObject:
   - component: {fileID: 1278409404}
   - component: {fileID: 1278409408}
   - component: {fileID: 1278409409}
+  - component: {fileID: 1278409410}
   m_Layer: 0
   m_Name: LeftPaddle
   m_TagString: Untagged
@@ -1599,6 +1628,19 @@ MonoBehaviour:
   isLeftPaddle: 1
   speed: 10
   rb: {fileID: 1278409408}
+--- !u!114 &1278409410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278409403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f05ca6540c1be54f8d3e7506c9c6f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 70
 --- !u!1 &1379810192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,6 +2705,7 @@ GameObject:
   - component: {fileID: 2055722058}
   - component: {fileID: 2055722063}
   - component: {fileID: 2055722062}
+  - component: {fileID: 2055722064}
   m_Layer: 0
   m_Name: RightPaddle
   m_TagString: Untagged
@@ -2777,3 +2820,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 1
+--- !u!114 &2055722064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055722057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f05ca6540c1be54f8d3e7506c9c6f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 70
