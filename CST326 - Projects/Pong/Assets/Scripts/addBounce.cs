@@ -6,7 +6,7 @@ using UnityEngine;
 public class addBounce : MonoBehaviour
 {
     public float bounceStrength;
-
+    
     private Rigidbody rBody;
     // Start is called before the first frame update
     void Start()
@@ -22,8 +22,7 @@ public class addBounce : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("kwekwkwwkewkwk");
         Vector3 normal = collision.GetContact(0).normal;
-        rBody.AddForce((-normal * this.bounceStrength));
+        rBody.AddForce((-normal * this.bounceStrength), ForceMode.VelocityChange);
     }
 }

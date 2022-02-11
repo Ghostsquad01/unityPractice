@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     public bool isLeftPaddle;
     public float speed;
     public Rigidbody rb;
-    private float topBounds = 7.25f;
-    private float botBounds = -7.25f;
+    private float topBounds = 7.2f;
+    private float botBounds = -7.2f;
     private float movement;
 
     // Start is called before the first frame update
