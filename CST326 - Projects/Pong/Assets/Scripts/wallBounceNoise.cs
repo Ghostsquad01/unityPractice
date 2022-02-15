@@ -21,7 +21,7 @@ public class wallBounceNoise : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ball(Clone)")
+        if (collision.gameObject.name == "Ball")
         {
             AudioSource clip = GetComponent<AudioSource>();
             clip.clip = sound;

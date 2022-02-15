@@ -60,11 +60,11 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ball(Clone)")
+        if (collision.gameObject.name == "Ball")
         {
-            newBallMV check = collision.gameObject.GetComponent<newBallMV>();
+            Ball check = collision.gameObject.GetComponent<Ball>();
 
-            check.ballSpeed += 1.5f;
+            check.ballSpeed += 2.0f;
             Debug.Log("Ball speed is now " + check.ballSpeed);
             
             rBody = collision.gameObject.GetComponent<Rigidbody>();
