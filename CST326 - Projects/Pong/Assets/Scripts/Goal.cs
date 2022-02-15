@@ -27,26 +27,26 @@ public class Goal : MonoBehaviour
         Destroy(other.gameObject);
         if (transform.gameObject.name == "LeftGoal")
         {
-            ballPrefab.transform.localPosition = new Vector3(-24f, 0f, 0f);
+            ballPrefab.transform.localPosition = new Vector3(-0.5f, 0f, 0f);
             rightScore++;
-            score.text = $"Score: {rightScore}";
+            score.text = $"{rightScore}";
         }else if (transform.gameObject.name == "RightGoal")
         {
-            ballPrefab.transform.localPosition = new Vector3(24f, 0f, 0f);
+            ballPrefab.transform.localPosition = new Vector3(0.5f, 0f, 0f);
             leftScore++;
-            score.text = $"Score: {leftScore}";
+            score.text = $"{leftScore}";
         }
 
         if (leftScore == 11)
         {
             leftScore = 0;
             rightScore = 0;
-            Debug.Log("Left Player wins! The score is now " + leftScore + "-" + rightScore);
+            Debug.Log("Left Player wins! The score is now reset to " + leftScore + "-" + rightScore);
         }else if (rightScore == 11)
         {
             leftScore = 0;
             rightScore = 0;
-            Debug.Log("Right Player wins! The score is now " + leftScore + "-" + rightScore);
+            Debug.Log("Right Player wins! The score is now reset to " + leftScore + "-" + rightScore);
         }
         else
         {

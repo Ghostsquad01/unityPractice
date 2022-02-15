@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class addBounce : MonoBehaviour
 {
-    public float bounceStrength;
-    
     private Rigidbody rBody;
     // Start is called before the first frame update
     void Start()
     {
-        rBody = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -19,10 +17,19 @@ public class addBounce : MonoBehaviour
     {
         
     }
-
     private void OnCollisionEnter(Collision collision)
     {
-        Vector3 normal = collision.GetContact(0).normal;
-        rBody.AddForce((-normal * this.bounceStrength), ForceMode.VelocityChange);
+        if (collision.gameObject.name == "LeftPaddle" || collision.gameObject.name == "RightPaddle")
+        {
+            
+        }
+        else
+        {
+            newBallMV check = collision.gameObject.GetComponent<newBallMV>();
+            Vector3 normal = collision.GetContact(0).normal;
+        
+            Rigidbody rBody = collision.gameObject.GetComponent<Rigidbody>();
+            rBody.AddForce((-normal * check.ballSpeed), ForceMode.VelocityChange);
+        }
     }
 }

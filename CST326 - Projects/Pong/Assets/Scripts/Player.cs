@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -10,10 +11,11 @@ public class Player : MonoBehaviour
     public bool isLeftPaddle;
     public float speed;
     public Rigidbody rb;
-    private float topBounds = 7.2f;
-    private float botBounds = -7.2f;
+    public AudioClip sound;
+    private float topBounds = 7.25f;
+    private float botBounds = -7.25f;
     private float movement;
-
+    private Rigidbody rBody;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,9 +52,28 @@ public class Player : MonoBehaviour
         }
         else
         {
+            // rb.AddForce(force, ForceMode.VelocityChange);
             // move freely (im sorry newton)
-            rb.velocity = new Vector3(rb.velocity.x, 0f, movement * speed);
+            rb.velocity = new Vector3(0f, 0f, movement * speed);
         }
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Ball(Clone)")
+        {
+            newBallMV check = collision.gameObject.GetComponent<newBallMV>();
+
+            check.ballSpeed += 1.5f;
+            Debug.Log("Ball speed is now " + check.ballSpeed);
+            
+            rBody = collision.gameObject.GetComponent<Rigidbody>();
+            Vector3 normal = collision.GetContact(0).normal;
+            rBody.AddForce((-normal * check.ballSpeed), ForceMode.VelocityChange);
+
+            AudioSource contact = GetComponent<AudioSource>();
+            contact.clip = sound;
+            contact.Play();
+        }
+    }
 }
