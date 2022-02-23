@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI worldTimer;
     public TextMeshProUGUI coinScore;
+    public TextMeshProUGUI score;
 
     public AudioClip brickDeath;
     public AudioClip coinPickUp;
@@ -17,6 +18,8 @@ public class UIManager : MonoBehaviour
 
     private float startTime = 100f;
     private float coinAMT = 0f;
+
+    private float marioScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +55,9 @@ public class UIManager : MonoBehaviour
                     {
                         coinScore.text = "x" + coinAMT;
                     }
+
+                    marioScore += 100;
+                    score.text = "Mario\n000" + marioScore;
                 }
             }
         }
