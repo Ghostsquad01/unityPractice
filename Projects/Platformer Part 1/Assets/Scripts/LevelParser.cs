@@ -9,12 +9,24 @@ public class LevelParser : MonoBehaviour
     // x = rock
     // ? = questionBlock
     // s = stone
+    // v = boundary wall
+    // p = flag pole
+    // k = castle block
+    // w = water block
+    // c = coin
+    // 0 = top of flag pole
     public string filename;
     public GameObject rockPrefab;
     public GameObject brickPrefab;
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
     public Transform environmentRoot;
+    public GameObject boundWall;
+    public GameObject pole;
+    public GameObject water;
+    public GameObject coin;
+    public GameObject topOfFlag;
+    public GameObject castle;
 
     // --------------------------------------------------------------------------
     void Start()
@@ -90,6 +102,43 @@ public class LevelParser : MonoBehaviour
                     testObject.transform.position = new Vector3(column, row, 0f);
                     testObject.transform.SetParent(environmentRoot);
                 }
+                // --------------------------- new parser blocks ---------------
+                if (letter == 'v') // bound block
+                {
+                    var testObject = Instantiate(boundWall);
+                    testObject.transform.position = new Vector3(column, row, 0f);
+                    testObject.transform.SetParent(environmentRoot);
+                }
+                if (letter == 'w') // water block
+                {
+                    var testObject = Instantiate(water);
+                    testObject.transform.position = new Vector3(column, row, 0f);
+                    testObject.transform.SetParent(environmentRoot);
+                }
+                if (letter == 'c') // coin block
+                {
+                    var testObject = Instantiate(coin);
+                    testObject.transform.position = new Vector3(column, row, 0f);
+                    testObject.transform.SetParent(environmentRoot);
+                }
+                if (letter == 'k') // castle block
+                {
+                    var testObject = Instantiate(castle);
+                    testObject.transform.position = new Vector3(column, row, 0f);
+                    testObject.transform.SetParent(environmentRoot);
+                }
+                if (letter == 'p') // pole block
+                {
+                    var testObject = Instantiate(pole);
+                    testObject.transform.position = new Vector3(column, row, 0f);
+                    testObject.transform.SetParent(environmentRoot);
+                }
+                if (letter == 'o') // stone block
+                {
+                    var testObject = Instantiate(topOfFlag);
+                    testObject.transform.position = new Vector3(column, row, 0f);
+                    testObject.transform.SetParent(environmentRoot);
+                }
                 // Todo - Position the new GameObject at the appropriate location by using row and column
                 // Todo - Parent the new GameObject under levelRoot
                 column++;
@@ -105,6 +154,16 @@ public class LevelParser : MonoBehaviour
         {
            Destroy(child.gameObject);
         }
+        LoadLevel();
+    }
+
+    public void nextLevel()
+    {
+        foreach (Transform child in environmentRoot)
+        {
+            Destroy(child.gameObject);
+        }
+        filename = "1-2";
         LoadLevel();
     }
 }

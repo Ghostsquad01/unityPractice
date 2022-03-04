@@ -11,7 +11,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI worldTimer;
     public TextMeshProUGUI coinScore;
     public TextMeshProUGUI score;
-
+    public TextMeshProUGUI worldLevel;
+    
     public AudioClip brickDeath;
     public AudioClip coinPickUp;
     // private TimeSpan timer = new TimeSpan(0, 0, 100);
@@ -63,5 +64,45 @@ public class UIManager : MonoBehaviour
         }
         worldTimer.text = "Time\n   " + Math.Floor(startTime);
         startTime -= Time.deltaTime;
+    }
+
+    public void addCoin()
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = coinPickUp;
+        audio.Play();
+        coinAMT++;
+        marioScore += 100;
+        if (coinAMT < 10)
+        {
+            coinScore.text = "x0" + coinAMT;
+        }
+        else
+        {
+            coinScore.text = "x" + coinAMT;
+        }
+    }
+
+    public void addScore()
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = brickDeath;
+        audio.Play();
+        marioScore += 100;
+        score.text = "Mario\n000" + marioScore;
+    }
+
+    public void resetUI()
+    {
+        marioScore = 0;
+        coinAMT = 0;
+        startTime = 100;
+        score.text = "Mario\n00000";
+        coinScore.text = "x00";
+    }
+
+    public float getTimer()
+    {
+        return startTime;
     }
 }
