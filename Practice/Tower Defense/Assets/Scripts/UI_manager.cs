@@ -1,28 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_manager : MonoBehaviour
 {
     public TextMeshProUGUI purse;
     public TextMeshProUGUI selected_tower;
-    public GameObject towerSpawner;
-    public Sprite fireball_tower;
-    public Sprite wizard_tower;
+    public TextMeshProUGUI healthbar;
+    public TextMeshProUGUI gameover;
+    public GameObject fireball_tower;
+    public GameObject wizard_tower;
+    public AudioClip clip;
+    public Button btn;
+    private AudioSource audio;
 
     private int score;
     private int tower = 1;
+    private int health;
     // Start is called before the first frame update
     void Start()
     {
+        
+        audio = GetComponent<AudioSource>();
+        audio.clip = clip;
         selected_tower.text = "Fireball Tower is selected";
-        score = 0;
+        score = 1000;
+        health = 100;
+        healthbar.text = "Your health Left: " + health;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health == 0)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (tower == 1)
@@ -48,10 +64,9 @@ public class UI_manager : MonoBehaviour
                     {
                         if (score >= 1000)
                         {
-                            towerSpawner.transform.position = hit.collider.gameObject.transform.position;
+                            fireball_tower.transform.position = hit.collider.gameObject.transform.position;
                             Destroy(hit.collider.gameObject);
-                            towerSpawner.GetComponent<SpriteRenderer>().sprite = fireball_tower;
-                            Instantiate(towerSpawner);
+                            Instantiate(fireball_tower);
                             score -= 1000;
                             purse.text = "Purse: " + score;
                         }
@@ -59,10 +74,9 @@ public class UI_manager : MonoBehaviour
                     {
                         if (score >= 2000)
                         {
-                            towerSpawner.transform.position = hit.collider.gameObject.transform.position;
+                            wizard_tower.transform.position = hit.collider.gameObject.transform.position;
                             Destroy(hit.collider.gameObject);
-                            towerSpawner.GetComponent<SpriteRenderer>().sprite = wizard_tower;
-                            Instantiate(towerSpawner);
+                            Instantiate(wizard_tower);
                             score -= 2000;
                             purse.text = "Purse: " + score;
                         }
@@ -73,12 +87,25 @@ public class UI_manager : MonoBehaviour
                     hit.transform.GetComponent<Enemy>().Damage();
                     if (hit.transform.GetComponent<Enemy>().getHealth() == 0)
                     {
+                        audio.Play();
                         Destroy(hit.transform.gameObject);
                         addCoins();
                     }
                 }
             }
         }
+    }
+
+    public void loseHP()
+    {
+        health -= 20;
+        if (health == 0)
+        {
+            Debug.Log("You suck at defending! You lost!");
+            gameover.gameObject.SetActive(true);
+            btn.gameObject.SetActive(true);
+        }
+        healthbar.text = "Your health Left: " + health;
     }
 
     public void addCoins()

@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5266522437289363683}
   - component: {fileID: 5266522437289363684}
   - component: {fileID: 5266522437289363685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: enemy_1
   m_TagString: Enemy_1
   m_Icon: {fileID: 0}
@@ -204,9 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351ee32cb3602da478096e0469b3d8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  speed: 5
-  coinValue: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -216,9 +213,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  materials:
-  - {fileID: 2100000, guid: c0a8a265b3deef84a888e2ba41f948c9, type: 2}
-  - {fileID: 2100000, guid: 17109c360839f3d468a668ff6600dfd2, type: 2}
-  - {fileID: 2100000, guid: e8e3b45040cb5914c80a640a9913b954, type: 2}
-  - {fileID: 2100000, guid: e55c1478f58f4ad4bbb1c87927adac1b, type: 2}
   healthbar: {fileID: 7120357465798241213}

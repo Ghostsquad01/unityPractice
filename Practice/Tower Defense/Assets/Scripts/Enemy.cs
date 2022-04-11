@@ -11,21 +11,21 @@ public class Enemy : MonoBehaviour
 
     public List<Transform> waypoints;
     public Transform healthbar;
+    
 
     private GameObject gm;
     private UI_manager ui;
     private int health;
     private int targetWaypointIndex;
-    private int changeMaterial;
     // NOTE! This code should work for any speed value (large or small)
 
     //-----------------------------------------------------------------------------
     void Start()
     {
         // todo #2
+        
         transform.position = waypoints[0].position;
         targetWaypointIndex = 1;
-        changeMaterial = 0;
         health = 2;
         gm = GameObject.FindWithTag("UI_manager");
         ui = gm.gameObject.GetComponent<UI_manager>();
@@ -37,7 +37,8 @@ public class Enemy : MonoBehaviour
     {
         if (targetWaypointIndex == 8)
         {
-            Debug.Log("Enemy has reached your gates! You lost!");
+            ui.loseHP();
+            Destroy(gameObject);
             return;
         }
 
@@ -58,9 +59,6 @@ public class Enemy : MonoBehaviour
     }
 
     //-----------------------------------------------------------------------------
-    private void TargetNextWaypoint()
-    {
-    }
 
     private void AddToPurse()
     {
