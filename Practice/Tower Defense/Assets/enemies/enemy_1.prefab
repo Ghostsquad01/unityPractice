@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7889349658802185729}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3742499363593103521}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.004, y: 0.922, z: 0}
-  m_LocalScale: {x: 1.0127329, y: 0.2379, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.2379, z: 1}
   m_Children: []
   m_Father: {fileID: 5266522437289363681}
   m_RootOrder: 0
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5266522437289363683}
   - component: {fileID: 5266522437289363684}
   - component: {fileID: 5266522437289363685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: enemy_1
   m_TagString: Enemy_1
   m_Icon: {fileID: 0}
@@ -122,14 +122,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5266522437289363686}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 3.29, y: 4.61, z: 0}
-  m_LocalScale: {x: 0.3259, y: 0.2379, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 7120357465798241213}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 90, z: 90}
 --- !u!33 &5266522437289363682
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -204,6 +204,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351ee32cb3602da478096e0469b3d8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
   healthbar: {fileID: 7120357465798241213}

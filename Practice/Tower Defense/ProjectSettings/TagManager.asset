@@ -8,6 +8,8 @@ TagManager:
   - Enemy_1
   - UI_manager
   - def_spot
+  - restartBTN
+  - last_enemy
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - whatIsEnemy
   - 
   - 
   - 
