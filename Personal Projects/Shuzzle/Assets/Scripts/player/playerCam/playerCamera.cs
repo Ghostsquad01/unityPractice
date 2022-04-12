@@ -15,6 +15,9 @@ public class playerCamera : MonoBehaviour
     
     private float xRotation;
     private float yRotation;
+
+    private float mouseX;
+    private float mouseY;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +28,12 @@ public class playerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.fixedDeltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * sensY;
+        if (Time.timeScale > 0)
+        {
+            mouseX = Input.GetAxisRaw("Mouse X") * Time.fixedDeltaTime * sensX; 
+            mouseY = Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * sensY;
+        }
+            
         // float mouseY= Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * sensY;
 
         yRotation += mouseX;

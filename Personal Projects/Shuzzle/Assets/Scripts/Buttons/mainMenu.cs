@@ -22,7 +22,7 @@ public class mainMenu : MonoBehaviour
         // loads scenes on top of each other
     public void startGame()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Shuzzle");
         Debug.Log(SceneManager.sceneCount);
     }
 

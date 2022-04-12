@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerHP : MonoBehaviour
 {
@@ -11,11 +14,19 @@ public class playerHP : MonoBehaviour
 
     [Header("References")] 
     public playerCamera cam;
+    public Image healthbar;
+    public Button restartBTN;
+    public TextMeshProUGUI deathMessage;
+    private RectTransform hpBar;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        hpBar = healthbar.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -29,11 +40,17 @@ public class playerHP : MonoBehaviour
         health -= 20;
         if (health == 0)
         {
-            Debug.Log("Player has died");
+            healthbar.GetComponent<RectTransform>().gameObject.SetActive(false);
+            deathMessage.gameObject.SetActive(true);
+            restartBTN.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
         }
         else
         {
-            Debug.Log("HP: " + health);
+            healthbar.GetComponent<RectTransform>().localScale =
+                new Vector3(hpBar.localScale.x * 0.75f, hpBar.localScale.y, hpBar.localScale.z);
         }
     }
 

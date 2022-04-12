@@ -7,6 +7,7 @@ public class enemyAI : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
+    public GameObject healthbar;
 
     //Patroling
     public Vector3 walkPoint;
@@ -75,6 +76,7 @@ public class enemyAI : MonoBehaviour
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
+        
 
         if (!alreadyAttacked)
         {
@@ -99,6 +101,9 @@ public class enemyAI : MonoBehaviour
 
         if (health <= 0) 
             DestroyEnemy();
+        healthbar.transform.localScale =
+            new Vector3(healthbar.transform.localScale.x, healthbar.transform.localScale.y,
+                healthbar.transform.localScale.z * 0.7f);
     }
     private void DestroyEnemy()
     {
