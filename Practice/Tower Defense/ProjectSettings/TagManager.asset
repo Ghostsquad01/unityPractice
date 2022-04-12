@@ -9,6 +9,7 @@ TagManager:
   - UI_manager
   - def_spot
   - restartBTN
+  - last_enemy
   layers:
   - Default
   - TransparentFX

@@ -10,53 +10,45 @@ public class tower : MonoBehaviour
     public float attackRange;
     public float timeBetweenAttacks;
     public GameObject projectile;
+    public GameObject towerAttackPoint;
     private bool alreadyAttacked;
     private bool enemyInAttackRange;
+    private bool enemyDead;
     private LayerMask whatIsEnemy;
 
     [Header("References")]
     public Transform enemy;
     // Start is called before the first frame update
 
-    private void Awake()
+    public void shoot()
     {
         
+        try
+        {
+            enemyDead = false;
+            enemy = GameObject.Find("enemy_1(Clone)").transform;
+            projectile.transform.position = towerAttackPoint.transform.position;
+            Instantiate(projectile);
+        }
+        catch
+        {
+            Debug.Log("No Enemy Being Targetted");
+            enemyDead = true;
+            CancelInvoke(nameof(shoot));
+        }
     }
 
     void Start()
     {
-        
+        InvokeRepeating(nameof(shoot), 0, timeBetweenAttacks);
     }
 
     // Update is called once per frame
     void Update()
     {
-        enemy = GameObject.Find("enemy_1(Clone)").transform;
-        enemyInAttackRange = Physics.CheckSphere(transform.position, 3000f, whatIsEnemy);
-        // Instantiate(projectile).GetComponent<Rigidbody>().AddForce(transform.forward * 10f, ForceMode.Impulse);
-        transform.LookAt(enemy);
-
-        Debug.Log(enemyInAttackRange);
-        if(enemyInAttackRange)
-            Debug.Log("enemy has entered attack range");
-    }
-
-    private void shootProjectile()
-    {
-        transform.LookAt(enemy);
-
-        if (!alreadyAttacked)
+        if (enemyDead)
         {
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-
-            alreadyAttacked = true;
-            Invoke(nameof(resetAttack), timeBetweenAttacks);
+            InvokeRepeating(nameof(shoot), 0, timeBetweenAttacks);
         }
-    }
-
-    private void resetAttack()
-    {
-        alreadyAttacked = false;
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class UI_manager : MonoBehaviour
 {
+    [Header("References")]
     public TextMeshProUGUI purse;
     public TextMeshProUGUI selected_tower;
     public TextMeshProUGUI healthbar;
@@ -14,22 +15,46 @@ public class UI_manager : MonoBehaviour
     public GameObject fireball_tower;
     public GameObject wizard_tower;
     public AudioClip clip;
+    public List<Transform> waypoints;
     public Button btn;
-    private AudioSource audio;
+    public AudioSource newaudio;
+    
+    [Header("Enemy")]
+    public Transform spawn;
+    public GameObject enemy;
+    public float spawnTime;
+    public float spawnDelay;
+    public float enemiesToSpawn;
+    private float enemiesLeftAlive;
+    
+    
 
     private int score;
     private int tower = 1;
     private int health;
+
+    public void spawnEnemy()
+    {
+        if (enemiesLeftAlive == 0)
+        {
+            btn.gameObject.SetActive(true);
+            CancelInvoke("spawnEnemy");
+        }
+        Instantiate(enemy, spawn.transform.position, enemy.transform.rotation);
+        enemiesLeftAlive--;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
-        audio = GetComponent<AudioSource>();
-        audio.clip = clip;
+        enemiesLeftAlive = enemiesToSpawn;
+        newaudio = GetComponent<AudioSource>();
+        newaudio.clip = clip;
         selected_tower.text = "Fireball Tower is selected";
         score = 1000;
         health = 100;
         healthbar.text = "Your health Left: " + health;
+        
+        InvokeRepeating(nameof(spawnEnemy), spawnTime, spawnDelay);
     }
 
     // Update is called once per frame
@@ -87,7 +112,7 @@ public class UI_manager : MonoBehaviour
                     hit.transform.GetComponent<Enemy>().Damage();
                     if (hit.transform.GetComponent<Enemy>().getHealth() == 0)
                     {
-                        audio.Play();
+                        newaudio.Play();
                         Destroy(hit.transform.gameObject);
                         addCoins();
                     }
@@ -105,12 +130,17 @@ public class UI_manager : MonoBehaviour
             gameover.gameObject.SetActive(true);
             btn.gameObject.SetActive(true);
         }
-        healthbar.text = "Your health Left: " + health;
+        healthbar.text = "Your Health Left: " + health;
     }
 
     public void addCoins()
     {
         score += 1000;
         purse.text = "Purse: " + score;
+    }
+
+    public void enemyHasDied()
+    {
+        enemiesLeftAlive--;
     }
 }
