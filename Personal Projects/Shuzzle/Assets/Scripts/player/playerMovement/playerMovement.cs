@@ -52,7 +52,6 @@ public class playerMovement : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
-    private Vector3 origin;
 
     private Rigidbody rb;
 
@@ -96,8 +95,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-        origin = transform.position;
+        rb.freezeRotation = true; ;
         readyToJump = true;
         startYScale = transform.localScale.y;
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class playerProjectile : MonoBehaviour
 {
+    public gunScript gun;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class playerProjectile : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            collision.gameObject.GetComponent<enemyAI>().TakeDamage(20);
+            collision.gameObject.GetComponent<enemyAI>().TakeDamage(gun.gunDamage);
             Debug.Log("Hit " + collision.gameObject.name + "enemy HP: " + collision.gameObject.GetComponent<enemyAI>().health);
             collision.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }

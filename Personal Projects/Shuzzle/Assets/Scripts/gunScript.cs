@@ -3,16 +3,19 @@ using TMPro;
 
 public class gunScript : MonoBehaviour
 {
-    //bullet 
-    public GameObject bullet;
+    [Header("Bullet Forces")] 
+    public float shootForce;
+    public float upwardForce;
 
-    //bullet force
-    public float shootForce, upwardForce;
-
-    //Gun stats
-    public float timeBetweenShooting, spread, reloadTime, timeBetweenShots;
-    public int magazineSize, bulletsPerTap;
+    [Header("Gun Stats")] 
+    public float timeBetweenShooting;
+    public float spread;
+    public float reloadTime; 
+    public float timeBetweenShots;
+    public int magazineSize;
+    public float bulletsPerTap;
     public bool allowButtonHold;
+    public int gunDamage;
 
     int bulletsLeft, bulletsShot;
 
@@ -22,8 +25,9 @@ public class gunScript : MonoBehaviour
 
     //bools
     bool shooting, readyToShoot, reloading;
-
-    //Reference
+    
+    [Header("References")]
+    public GameObject bullet;
     public Camera fpsCam;
     public Transform attackPoint;
 
@@ -96,6 +100,7 @@ public class gunScript : MonoBehaviour
         Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0); //Just add spread to last direction
 
         //Instantiate bullet/projectile
+        bullet.GetComponent<playerProjectile>().gun = this;
         GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity); //store instantiated bullet in currentBullet
         //Rotate bullet to shoot direction
         currentBullet.transform.forward = directionWithSpread.normalized;

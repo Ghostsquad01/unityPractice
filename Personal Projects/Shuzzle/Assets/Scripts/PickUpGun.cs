@@ -17,7 +17,6 @@ public class PickUpGun : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(slotFull + " " + transform.name);
         if (!equipped)
         {
             gun.enabled = false;
@@ -31,16 +30,13 @@ public class PickUpGun : MonoBehaviour
             coll.isTrigger = true;
             slotFull = true;
         }
-        Debug.Log(slotFull + " " + transform.name);
     }
     private void Update()
     {
         Vector3 distaceToPlayer = player.position - transform.position;
         if (!equipped && distaceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull)
         {
-            Debug.Log("Picking up a weapon");
             PickUp();
-            
         }
 
         if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
